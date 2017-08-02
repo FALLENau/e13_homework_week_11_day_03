@@ -46,10 +46,12 @@ var regionInfo = function() {
     }
   })
 
+
   populateList();
   select.addEventListener("change", countryInfo);
 
 }
+
 
 
 var countryInfo = function() {
@@ -71,10 +73,27 @@ var countryInfo = function() {
   createLi("Population: " + regionCountries[value].population);
   createLi("Capital: " + regionCountries[value].capital);
 
+  initialize(regionCountries[value].latlng)
+
   getBorders(regionCountries[value]);
 
   saveCountry(regionCountries[value]);
 }
+
+var initialize = function(latlng) {
+  // var obj = {lat:60.116667, lng:19.9 }
+  var obj = {lat: latlng[0], lng: latlng[1] }
+
+  var mainMap = new CountryMapPlugin(obj)
+}
+
+var CountryMapPlugin = function(obj) {
+  var container = document.querySelector(".main-map")
+  container = new google.maps.Map(container, {
+    center: obj,
+    zoom: 14
+  })
+}//Note here is the last leg of the map setup
 
 var recreateInfo = function(country) {
   createLi("Country: " + country.name);
@@ -113,7 +132,7 @@ var getBorders = function(country) {
       }
     }
     var bodyTag = document.querySelector("body");
-    bodyTag.appendChild(ul);  
+    bodyTag.appendChild(ul);
   }
 }
 
