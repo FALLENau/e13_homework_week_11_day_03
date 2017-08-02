@@ -2,3 +2,23 @@ body {
   color: orange;
   background-color: #333;
 }
+
+ul {
+  list-style: none;
+  border: 1px solid orange ;
+  padding: 15px;
+  max-width: 255px;
+}
+
+ul li {
+  padding-bottom: 5px;
+}
+
+#main-map {
+  width: 400px;
+  height: 400px;
+}
+
+#beer-list {
+  max-width: 255px;
+}
