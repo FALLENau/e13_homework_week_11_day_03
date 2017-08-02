@@ -35,20 +35,12 @@ function = function(event) {
 ```
 this will display the event details within the Dev tools in browser
 
-## JS button
+## JS 
 
 ```js
-var handleButtonClick = function() {
-  var pTage = document.querySelector("#button-result")
-  pTage.innerText = "Whoa dude, I totally got clicked!"
-}// changed button from text output into a click counter
 
-var app = function(){
-var button = document.querySelector("button")
-button.addEventListener("click", handleButtonClick)
-}
 
-window.addEventListener('load', app);
+
 ```
 
 ### JS text-along text field
