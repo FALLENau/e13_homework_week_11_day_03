@@ -2,7 +2,7 @@
 
 JavaScript Objectives of day 3 week 11. \
 -understand JSON \
-- \
+-create our own api catcher \
 - \
 - \
 - \
@@ -35,87 +35,82 @@ function = function(event) {
 ```
 this will display the event details within the Dev tools in browser
 
-## JS 
+## JSON api catcher
 
 ```js
+var makeRequest = function(url, callback) {
+  var request = new XMLHttpRequest()
+  request.addEventListener('load', callback)
+  request.open('GET', url)
+  request.send()
+}
+
+var requestComplete = function() {
+  console.log("Done baby doll")
+}
+
+var app = function () {
+  var url = "https://restcountries.eu/rest/v2/all"
+  makeRequest(url, requestComplete)
+}
+
+window.addEventListener('load', app);
+```
+this when take the steps to collect the api dat from the URL
+
+### JSON convert in api
+change requestComplete to collect and convert the array api
+```js
+var requestComplete = function() {
+  if (this.status !== 200) return
+
+  var jsonString = this.responseText
+  var countries = JSON.parse(jsonString)
+  populateList(countries)
+}
+```
+Then populate the list, to move towards displaying api array in a list
+```js
+
+var populateList = function(arrCountries) {
+  console.log(arrCountries)
+}
+```
 
 
+### JS create html elements
+create ul and li elements to place api within
+
+```js
 
 ```
 
-### JS text-along text field
+## JS
 
 ```js
-var handleKeyPress = function() {
-  var pTag = document.querySelector("#text-result")
-  var input = document.querySelector("input")
-  pTag.innerText = input.value
-}
-
-var app = function(){
-var input = document.querySelector("input")
-input.addEventListener("keyup", handleKeyPress)
-}
-```
-
-
-### JS Dynamic drop down box
-
-```js
-var handleSelectChanged = function() {
-  var pTag = document.querySelector("#select-result")
-  pTag.innerText = this.value + " Excellent!"
-}
-
-var app = function(){
-  var select = document.querySelector("select")
-  select.addEventListener("change", handleSelectChanged)
-}
-```
-
-## JS store data/Json conversion
-
-in handleButtonClick function
-```js
-var jsonString = JSON.stringify(pet)
-
-localStorage.setItem("pet", jsonString)
+v
 ```
 in app function
 ```js
-var jsonString = localStorage.getItem("pet")
 
-var pet = JSON.parse(jsonString)
 ```
 
-## JS Googleapis maps
+## JS
 
-first setup google api in your HTML and add JS access, both go in the head
+--
 ```html
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script src="app.js"></script>
-<script src="mapWrapper.js"></script>
+
 ```
 
-implement app.js the activate the api
+--
 ```js
-var initialize = function() {
-  var mainMap = new MapWrapper()
-}
 
-window.addEventListener("load", initialize)
 ```
-in mapWrapper function
+--
 ```js
-var MapWrapper = function() {
-  var container = document.querySelector("#main-map")
-  this.googleMap = new google.maps.Map(container, {
-    center: {lat:-38.3805969 , lng:144.8417823 },
-    zoom: 14
-  })
-}
+
 ```
-this was a practice with js api use, aimed at making functional use of google maps
+--
 
 ## Deployment
 

@@ -1,13 +1,24 @@
 var makeRequest = function(url, callback) {
   var request = new XMLHttpRequest()
+  request.addEventListener('load', callback)
   request.open('GET', url)
   request.send()
 }
 
-request.addEventListener('load', callback)
 
 var requestComplete = function() {
-  console.log("Done baby doll")
+  if (this.status !== 200) return
+
+  var jsonString = this.responseText
+  var countries = JSON.parse(jsonString)
+  populateList(countries)
+}
+
+var populateList = function(arrCountries) {
+  var ul = document.querySelector("#country-list")
+  countries.forEach(function(country) {
+    document.createElement("li")
+  })
 }
 
 var app = function () {
