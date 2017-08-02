@@ -1,0 +1,20 @@
+body {
+  background-color: #333;
+  color:orange;
+
+}
+
+ul {
+  list-style: none;
+  border: 1px solid orange ;
+  padding: 15px;
+  max-width: 255px;
+}
+
+ul li {
+  padding-bottom: 5px;
+}
+
+#country-list {
+  max-width: 255px;
+}
