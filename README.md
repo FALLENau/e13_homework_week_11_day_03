@@ -3,9 +3,11 @@
 JavaScript Objectives of day 3 week 11. \
 -understand JSON \
 -create our own api catcher \
-- \
-- \
-- \
+-create and populate ul and li html Elements \
+-populate page and done \
+
+-change 'onload' of page to be a clickable event\
+-create button \
 -
 
 
@@ -35,7 +37,7 @@ function = function(event) {
 ```
 this will display the event details within the Dev tools in browser
 
-## JSON api catcher
+### JSON api catcher
 
 ```js
 var makeRequest = function(url, callback) {
@@ -58,7 +60,7 @@ window.addEventListener('load', app);
 ```
 this when take the steps to collect the api dat from the URL
 
-### JSON convert in api
+## JSON convert in api
 change requestComplete to collect and convert the array api
 ```js
 var requestComplete = function() {
@@ -71,28 +73,45 @@ var requestComplete = function() {
 ```
 Then populate the list, to move towards displaying api array in a list
 ```js
-
 var populateList = function(arrCountries) {
   console.log(arrCountries)
 }
 ```
 
-
-### JS create html elements
+## JS create html elements
 create ul and li elements to place api within
 
 ```js
-
+var populateList = function(arrCountries) {
+  var ul = document.querySelector("#country-list")
+  arrCountries.forEach(function(country) {
+    var li = document.createElement("li")
+    li.innerText = country.name
+    ul.appendChild(li)
+  })
+}
 ```
+and you have a working 'onload' page, of country by api
 
-## JS
-
-```js
-v
+### JSON change 'onload' to a clickable event
+In the HTML create a button
+```html
+<button id='api-button'>Show me the world!</button>
 ```
-in app function
+create makeApi function and add the app functionality
 ```js
-
+var makeApi = function() {
+  var url = "https://restcountries.eu/rest/v2/all"
+  makeRequest(url, requestComplete)
+}
+```
+then in app function change to
+```js
+var app = function () {
+  var apiButton = document.querySelector('#api-button');
+  apiButton.addEventListener('click', makeApi);
+  // console.log(apiButton) //note:to test button is working
+}
 ```
 
 ## JS
@@ -106,9 +125,14 @@ in app function
 ```js
 
 ```
---
+#alternatively you can make a js button then attach the function makeApi to it
 ```js
-
+var makeButton = function() {
+  var button = document.createElement("button")
+  button.innerText("call api")
+  var bodyTag = document.querySelector("body")
+  bodyTag.appendChild(button)
+}
 ```
 --
 

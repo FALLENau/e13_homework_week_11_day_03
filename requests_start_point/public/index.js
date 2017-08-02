@@ -5,6 +5,10 @@ var makeRequest = function(url, callback) {
   request.send()
 }
 
+var makeApi = function() {
+  var url = "https://restcountries.eu/rest/v2/all"
+  makeRequest(url, requestComplete)
+}
 
 var requestComplete = function() {
   if (this.status !== 200) return
@@ -16,14 +20,24 @@ var requestComplete = function() {
 
 var populateList = function(arrCountries) {
   var ul = document.querySelector("#country-list")
-  countries.forEach(function(country) {
-    document.createElement("li")
+  arrCountries.forEach(function(country) {
+    var li = document.createElement("li")
+    li.innerText = country.name
+    ul.appendChild(li)
   })
 }
 
 var app = function () {
-  var url = "https://restcountries.eu/rest/v2/all"
-  makeRequest(url, requestComplete)
+  var apiButton = document.querySelector('#api-button');
+  apiButton.addEventListener('click', makeApi);
+  // console.log(apiButton)
 }
 
 window.addEventListener('load', app);
+
+// var makeButton = function() {
+//   var button = document.createElement("button")
+//   button.innerText("call api")
+//   var bodyTag = document.querySelector("body")
+//   bodyTag.appendChild(button)
+// }
