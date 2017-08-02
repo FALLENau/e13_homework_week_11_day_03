@@ -4,11 +4,10 @@ JavaScript Objectives of day 3 week 11. \
 -understand JSON \
 -create our own api catcher \
 -create and populate ul and li html Elements \
--populate page and done \
-
--change 'onload' of page to be a clickable event\
+-populate page and your done with the first step \
+-part 2 change 'onload' of page to be a clickable event\
 -create button \
--
+-move app functionality to the new makeApi function
 
 
 ## Getting Started
