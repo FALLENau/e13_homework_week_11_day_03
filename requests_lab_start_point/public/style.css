@@ -15,6 +15,11 @@ ul li {
   padding-bottom: 5px;
 }
 
+#main-map {
+  width: 400px;
+  height: 400px;
+}
+
 #country-list {
   max-width: 255px;
 }

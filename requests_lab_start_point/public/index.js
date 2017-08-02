@@ -88,11 +88,11 @@ var initialize = function(latlng) {
 }
 
 var CountryMapPlugin = function(obj) {
-  var container = document.querySelector(".main-map")
+  var container = document.querySelector("#main-map")
   container = new google.maps.Map(container, {
     center: obj,
     zoom: 14
-  })
+  });
 }//Note here is the last leg of the map setup
 
 var recreateInfo = function(country) {
